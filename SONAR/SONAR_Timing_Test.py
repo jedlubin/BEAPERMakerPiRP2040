@@ -13,7 +13,7 @@ from machine import I2C
 import time
 
 # BEAPER Pico support module
-import BEAPER_Pico as beaper
+import BEAPERMakerPiRP2040.Maker_Pi as beaper
 
 # Program Variables
 sonar_range_mm = 0

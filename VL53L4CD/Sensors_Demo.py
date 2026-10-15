@@ -40,7 +40,7 @@ import framebuf
 import time
 
 # BEAPER Nano board support module
-import BEAPER_Pico as beaper
+import BEAPERMakerPiRP2040.Maker_Pi as beaper
 
 # LCD driver and font modules
 import LCDconfig_Pico as lcd_config

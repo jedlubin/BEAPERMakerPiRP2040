@@ -16,7 +16,7 @@ from machine import I2C
 import time
 
 # BEAPER Pico board support module
-import BEAPER_Pico as beaper
+import BEAPERMakerPiRP2040.Maker_Pi as beaper
 
 beaper.pico_led_on()  # Turn LED on as status indicator
 

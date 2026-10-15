@@ -16,7 +16,7 @@
 
 import time
 
-import BEAPER_Pico as beaper
+import BEAPERMakerPiRP2040.Maker_Pi as beaper
 from VL53L4CD import VL53L4CD
 
 # Ranging-time settings use a 1-2-5 sequence.

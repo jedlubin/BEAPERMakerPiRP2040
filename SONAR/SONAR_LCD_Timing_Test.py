@@ -19,7 +19,7 @@ import array
 import time
 
 # BEAPER Pico support module
-import BEAPER_Pico as beaper
+import BEAPERMakerPiRP2040.Maker_Pi as beaper
 
 # LCD driver module
 import LCDconfig_Pico as lcd_config

@@ -23,7 +23,7 @@ import socket
 import network
 import json
 import time
-import BEAPER_Pico as beaper
+import BEAPERMakerPiRP2040.Maker_Pi as beaper
 import LCDconfig_Pico as lcd_config
 import NotoSansDisplay_24 as notosans24
 

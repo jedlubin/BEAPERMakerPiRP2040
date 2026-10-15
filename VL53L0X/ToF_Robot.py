@@ -20,7 +20,7 @@ import time
 # VL53L0X module
 from vl53l0x_nb import VL53L0X
 # BEAPER Pico module
-import BEAPER_Pico as beaper
+import BEAPERMakerPiRP2040.Maker_Pi as beaper
 
 # --- Program Constants ----------------
 MAX_TARGET_RANGE = const(500)   # Follow targets within max range (mm)

@@ -17,7 +17,7 @@
 #     LCD.py            - LCD driver module for ST7789 displays
 # ==============================================================================
 
-import BEAPER_Pico as beaper         # BEAPER Pico board module
+import BEAPERMakerPiRP2040.Maker_Pi as beaper         # BEAPER Pico board module
 import LCDconfig_Pico as lcd_config  # LCD configuration file (calls LCD.py driver)
 import time
 

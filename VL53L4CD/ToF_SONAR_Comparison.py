@@ -24,7 +24,7 @@ import time
 import LCDconfig_Pico as lcd_config
 
 # BEAPER Pico support module
-import BEAPER_Pico as beaper
+import BEAPERMakerPiRP2040.Maker_Pi as beaper
 
 # Configure VL53L4CD module and begin ranging
 from VL53L4CD import VL53L4CD

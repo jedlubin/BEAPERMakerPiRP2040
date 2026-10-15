@@ -27,7 +27,7 @@ import LCDconfig_Pico as lcd_config
 from vl53l0x_nb import VL53L0X
 
 # BEAPER Pico support module
-import BEAPER_Pico as beaper
+import BEAPERMakerPiRP2040.Maker_Pi as beaper
 
 # --- Program Constants ----------------
 TIME_DIV = 500  # Scope grid horizontal time/div in us

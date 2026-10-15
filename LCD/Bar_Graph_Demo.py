@@ -18,7 +18,7 @@ Hardware:
     Set JP1, JP2, and JP3 jumpers to Enviro. to connect Q4, RV1, and RV2.
 """
 
-import BEAPER_Pico as beaper         # BEAPER Pico board module
+import BEAPERMakerPiRP2040.Maker_Pi as beaper         # BEAPER Pico board module
 import LCDconfig_Pico as lcd_config  # LCD configuration file (calls LCD.py driver)
 import bar_graph                     # Bar graph module
 import time

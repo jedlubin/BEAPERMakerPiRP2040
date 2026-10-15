@@ -1,19 +1,24 @@
 # ==============================================================================
-# BEAPER Pico Board Module [BEAPER_Pico.py]
-# Version: 1.2
-# Updated: September 5, 2026
+# Maker Pi RP2040 Board Module [Maker_Pi.py]
+# Version: 0.1
+# Updated: October 15, 2026
 # 
-# Board support module for the mirobo.tech BEAPER Pico circuit.
+# Board support module for using the Cytron Maker Pi RP 2040 with the 
+# mirobo.tech BEAPER Pico beginner microcontroller curriculum.
 # 
-# This module configures Raspberry Pi Pico's GPIO pins for BEAPER
-# Pico's on-board circuits and provides simple helper functions to
-# enable beginners to focus on learning programming concepts quickly.
+# This module configures Maker Pi's GPIO on-board circuits to match
+# the names used in the BEAPER module and curriculume and provides
+# simple helper functions to enable beginners to focus on learning 
+# programming concepts quickly.
 # 
 # Before getting started with it you should know:
 # - nothing here is hidden, or **magic**, or requires special libraries
 # - the functions are just normal Python code to help you start learning
 # - you're encouraged to modify the code to make it work better for you!
 # 
+"""
+Not sure about the hardware notes. Check docs and revise/remove
+"""
 # BEAPER Pico hardware notes:
 # - Buttons use internal pull-up resistors (pressed == 0)
 # - LEDs and motor driver share I/O pins (so much I/O, so few I/O pins!)
