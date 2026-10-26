@@ -1,17 +1,17 @@
 # ================================================================================
 # Beginner Activity 1: Digital Output [Activity_B01_Output.py]
-# Version: 1.2
-# Updated: September 7, 2026
+# Version: 0.1
+# Updated: October 26, 2026
 #
-# Platform: mirobo.tech BEAPER Pico circuit (any configuration)
-# Requires: BEAPER_Pico.py board module file
+# Platform: Cytron Maker Pi RP2040
+# Requires: Maker_Pi.py board module file
 # ================================================================================
 
-# IMPORTANT: Copy BEAPER_Pico.py into your Raspberry Pi Pico.
-import BEAPER_Pico as beaper  # Set up BEAPER Pico I/O
+# IMPORTANT: Copy Maker_Pi.py into your Raspberry Pi Pico.
+import Maker_Pi as makerpi  # Set up BEAPER Pico I/O
 
 # Turn on one LED
-beaper.LED2.value(1)
+makerpi.LED0.value(1)
 
 # Main loop - code indented below while True: repeats forever
 while True:
@@ -50,28 +50,28 @@ while True:
 #
 # In later GE and EA sections you'll be asked to modify or replace the code
 # in your program. When copying activity code into your program you'll need
-# to strip out the pound characters in order for the code to run. It's easy
-# to toggle code comments on or off by selecting one or more lines of text
-# and then choosing 'Toggle comment' from the Edit menu in Thonny.
+# to strip out the pound characters in order for the code to run. In most 
+# code editors, it's easy to toggle code comments on or off by selecting one
+# or more lines of text and then choosing 'Toggle comment' from the menu.
 #
 # --------------------------------------------------------------------------------
 # GE 2 - Importing the board module
 # --------------------------------------------------------------------------------
 #
 # The first real program statement encountered in this program imports a
-# board module file for your BEAPER Pico circuit.
+# board module file for your Maker Pi board.
 #
 # Example code:
 #
-# import BEAPER_Pico as beaper
+# import Maker_Pi as makerpi
 #
-# The 'BEAPER_Pico.py' board module file must be copied into the filesystem
+# The 'Maker_Pi.py' board module file must be copied into the filesystem
 # memory of the microcontroller before this program runs. If the file is
 # not present when the import statement runs, an error will be generated,
 # and an error message will be printed in the shell window below.
 #
-# The BEAPER_Pico.py board module file contains ordinary MicroPython
-# program code that defines and configures BEAPER Pico's I/O devices and
+# The Maker_Pi.py board module file contains ordinary MicroPython
+# program code that defines and configures Maker Pi's I/O devices and
 # microcontroller pins for you, helping you to start writing programs
 # more quickly. You can open the board module file in the code editor to
 # explore all of the code it contains.
@@ -83,17 +83,17 @@ while True:
 #
 # Example code:
 #
-# beaper.LED2.value(1)
+# makerpi.LED2.value(1)
 #
-# Let's break this statement down: the BEAPER_Pico board module has been
-# given the shorter name 'beaper' by the import statement, and 'LED2' is
-# one of the objects defined in the BEAPER_Pico board module file.
+# Let's break this statement down: the Maker_Pi board module has been
+# given the name 'makerpi' by the import statement, and 'LED2' is
+# one of the objects defined in the Maker_Pi board module file.
 # MicroPython's 'value' method is used to read or set pin values, so the
 # end result of the microcontroller running this statement is that the
 # value of the LED2 pin gets set to 1, meaning the output voltage of the
 # pin connected to LED2 is set to around 3.3V, which will turn LED2 on.
 #
-# All of BEAPER Pico's other LEDs (LED2 - LED5) can be controlled in
+# All of Maker Pi's other LEDs (LED0 - LED28) can be controlled in
 # exactly the same way. Let's try it.
 #
 # Add a second LED output statement to light LED3 below the existing
@@ -108,8 +108,8 @@ while True:
 # each program statement, in order, from the top of the program code to
 # the bottom.
 #
-# So, after adding the statement 'beaper.LED3.value(1)' below the existing
-# 'beaper.LED2.value(1)' statement in GE 2, the microcontroller will turn
+# So, after adding the statement 'makerpi.LED3.value(1)' below the existing
+# 'makerpi.LED2.value(1)' statement in GE 2, the microcontroller will turn
 # LED2 on first, followed by LED3. Though these two actions take place
 # sequentially, they happen so fast that, to us at least, it looks like
 # both LEDs turn on simultaneously.
@@ -130,13 +130,13 @@ while True:
 #
 # Indentation is very important in MicroPython, and program editors will
 # try to help you indent your program code in a consistent way - let them!
-# If two or more program statements that are meant to be in the same code
-# structure use different amounts of space characters to indent their
+# If two or more program statements that are meant to be in the same block
+# of code use different amounts of space characters to indent their
 # code, the MicroPython interpreter will generate an error due to the
 # mismatch. You will often run into this problem when copying and pasting
 # code examples from different sources.
 #
-# Would it make sense to put the 'beaper.LED2.value(1)' output statement
+# Would it make sense to put the 'makerpi.LED2.value(1)' output statement
 # inside the 'while True:' loop? Why or why not? What would the program be
 # trying to do if the statements used to turn on the LEDs were moved into
 # the 'while True:' loop?
@@ -172,9 +172,6 @@ while True:
 # while True:
 #     beaper.LED3.value(1)  # LED3 on
 #     beaper.LED3.value(0)  # LED3 off
-#
-# Reminder: easily remove pound symbol '#' comments from multiple lines of code
-# by highlighting the lines and selecting 'Toggle comment' from the Edit menu.
 #
 # Since these two statements are now inside the main loop, 'pass' is no
 # longer needed. The loop will run each statement once, first turning LED3
@@ -221,24 +218,3 @@ while True:
 #
 # Create a program that lights a pattern by illuminating at least two of
 # the on-board LEDs. Run your program to verify that it works as expected.
-#
-# --------------------------------------------------------------------------------
-# EA 4 - Use the microcontroller module LED
-# --------------------------------------------------------------------------------
-#
-# The BEAPER_Pico.py board module file includes functions to control the
-# Raspberry Pi Pico module's on-board LED, as well as many other pin
-# definitions and pre-made functions for the BEAPER Pico circuit. (Feel
-# free to open the file to explore all of the code that it contains.)
-#
-# One of the functions in the BEAPER Pico board module is used to turn on
-# the Raspberry Pi Pico microcontroller's on-board LED:
-#
-# Example code:
-#
-# beaper.pico_led_on()
-#
-# Add this function call at the very beginning of your program so that
-# the Raspberry Pi Pico's LED can act as a status indicator to show that
-# your program is running even if none of the BEAPER Pico's on-board LEDs
-# are lit. Run the program to verify that it works.
