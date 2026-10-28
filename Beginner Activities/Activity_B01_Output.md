@@ -38,6 +38,14 @@ In the starter program, most of the text is comments. How does the
 MicroPython editor you're using treat the comments differently from the
 actual program code?
 
+> Answer here: 
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
+
 In later GE and EA sections you'll be asked to modify or replace the code
 in your program. When copying activity code into your program you'll need
 to strip out the pound characters in order for the code to run. In most 
@@ -125,9 +133,26 @@ mismatch. You will often run into this problem when copying and pasting
 code examples from different sources.
 
 Would it make sense to put the 'makerpi.LED2.value(1)' output statement
-inside the 'while True:' loop? Why or why not? What would the program be
-trying to do if the statements used to turn on the LEDs were moved into
-the 'while True:' loop?
+inside the 'while True:' loop? Why or why not? 
+
+> Answer here: 
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
+
+What would the program be trying to do if the statements used to turn on
+the LEDs were moved into the 'while True:' loop?
+
+> Answer here: 
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
 
 ### GE 5 - The pass statement
 
@@ -146,6 +171,14 @@ Since MicroPython interpreters ignore the rest of any line of text
 following a pound sign, the pass statement will now be ignored.
 What do you think the word pass actually does? How might pass
 be helpful to us later?
+
+> Answer here: 
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
 
 ### GE 6 - Fast output changes
 
@@ -169,6 +202,14 @@ top, turning LED3 on again, and then off again... forever.
 Run the program and observe LED3. Is LED3 on, off, or flashing? What
 should be happening? Is it? How could you test your prediction?
 
+> Answer here: 
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
+
 ## Extension Activities
 
 Extension activities give learners a chance to apply the concepts and
@@ -183,8 +224,24 @@ The statement used to turn LED2 on in the starter program runs before
 the main while: loop. What do you think will happen if this statement
 is immediately followed by a second statement to turn LED2 off?
 
+> Answer here: 
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
+
 Try it! Do you see LED2 turning on and then off? Explain what is
 happening and why you think this happens.
+
+> Answer here: 
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
 
 ### EA 2 - Reverse the statement order
 
@@ -192,6 +249,14 @@ Predict what will happen if the order of the two LED2 statements in EA 1
 is reversed so that LED2 is turned off first, and then turned on.
 
 Try it! Does the state of LED2 match your prediction?
+
+> Answer here: 
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
+> <br>
 
 ### EA 3 - Create an LED pattern
 
