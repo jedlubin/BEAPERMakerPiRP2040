@@ -31,7 +31,7 @@ Most computer programs contain both text comments (which help anyone
 reading the program code to understand it) and the actual program
 statements that the microcontroller will run or execute.
 
-Comments in MicroPython follow a pound sign '#', meaning everything that
+Comments in MicroPython follow a pound sign ```#```, meaning everything that
 follows a pound sign in a line of text will be ignored.
 
 In the starter program, most of the text is comments. How does the
@@ -86,9 +86,9 @@ makerpi.LED2.value(1)
 ```
 
 Let's break this statement down: the Maker_Pi board module has been
-given the name 'makerpi' by the import statement, and 'LED2' is
+given the name ```makerpi``` by the import statement, and ```LED2``` is
 one of the objects defined in the Maker_Pi board module file.
-MicroPython's 'value' method is used to read or set pin values, so the
+MicroPython's ```value()``` method is used to read or set pin values, so the
 end result of the microcontroller running this statement is that the
 value of the LED2 pin gets set to 1, meaning the output voltage of the
 pin connected to LED2 is set to around 3.3V, which will turn LED2 on.
@@ -106,8 +106,8 @@ MicroPython runs every program by reading, interpreting, and executing
 each program statement, in order, from the top of the program code to
 the bottom.
 
-So, after adding the statement 'makerpi.LED3.value(1)' below the existing
-'makerpi.LED2.value(1)' statement in GE 2, the microcontroller will turn
+So, after adding the statement ```makerpi.LED3.value(1)``` below the existing
+```makerpi.LED2.value(1)``` statement in GE 2, the microcontroller will turn
 LED2 on first, followed by LED3. Though these two actions take place
 sequentially, they happen so fast that, to us at least, it looks like
 both LEDs turn on simultaneously.
@@ -120,9 +120,9 @@ programs usually don't end. Instead, they continue running the task they
 were designed to do over and over again in what is called a main program
 loop.
 
-In MicroPython programs, the 'while True:' structure is the most common
+In MicroPython programs, the ```while True:``` structure is the most common
 method used to create a main program loop. Any statements indented by
-the same amount below the 'while True:' line will be repeated forever.
+the same amount below the ```while True:``` line will be repeated forever.
 
 Indentation is very important in MicroPython, and program editors will
 try to help you indent your program code in a consistent way - let them!
@@ -132,8 +132,8 @@ code, the MicroPython interpreter will generate an error due to the
 mismatch. You will often run into this problem when copying and pasting
 code examples from different sources.
 
-Would it make sense to put the 'makerpi.LED2.value(1)' output statement
-inside the 'while True:' loop? Why or why not? 
+Would it make sense to put the ```makerpi.LED2.value(1)``` output statement
+inside the ```while True:``` loop? Why or why not? 
 
 > Answer here: 
 > <br>
@@ -144,7 +144,7 @@ inside the 'while True:' loop? Why or why not?
 > <br>
 
 What would the program be trying to do if the statements used to turn on
-the LEDs were moved into the 'while True:' loop?
+the LEDs were moved into the ```while True:``` loop?
 
 > Answer here: 
 > <br>
@@ -156,7 +156,7 @@ the LEDs were moved into the 'while True:' loop?
 
 ### GE 5 - The pass statement
 
-The 'pass' statement in the main 'while True:' loop prevents MicroPython
+The ```pass``` statement in the main ```while True:``` loop prevents MicroPython
 from generating an error due to the otherwise empty loop. Comment out
 the pass statement by placing a pound sign in front of the pass keyword.
 Then, try to run the program.
@@ -183,7 +183,7 @@ be helpful to us later?
 ### GE 6 - Fast output changes
 
 Let's try to blink LED3 on and off. Replace the contents of the main
-'while True:' loop with two statements: one to turn the LED on, followed
+```while True:``` loop with two statements: one to turn the LED on, followed
 by a second one to turn the LED off.
 
 Example code:
@@ -194,7 +194,7 @@ while True:
     makerpi.LED3.value(0)  # LED3 off
 ```
 
-Since these two statements are now inside the main loop, 'pass' is no
+Since these two statements are now inside the main loop, ```pass``` is no
 longer needed. The loop will run each statement once, first turning LED3
 on, and then turning LED3 off. After that, the loop will repeat from the
 top, turning LED3 on again, and then off again... forever.
