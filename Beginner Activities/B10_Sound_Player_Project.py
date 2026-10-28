@@ -50,8 +50,8 @@ def set_tone(freq, duty_u16):
     # Complete the TODO below before relying on the returned duty value.
     freq = max(FREQ_MIN, min(FREQ_MAX, freq))
     # TODO: clamp duty_u16 to the range DUTY_MIN .. DUTY_MAX
-    beaper.LS1.freq(freq)
-    beaper.LS1.duty_u16(duty_u16)
+    beaper.SPEAKER.freq(freq)
+    beaper.SPEAKER.duty_u16(duty_u16)
     return freq, duty_u16
 
 def beep(freq, duty_u16, duration_ms):

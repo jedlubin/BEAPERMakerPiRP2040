@@ -120,7 +120,7 @@ import socket
 NUM_LEDS       = 30           # Number of pixels in your strip.
 MAX_BRIGHTNESS = 32           # Global brightness cap (0-255).
 STRIP_TYPE     = "RGB"        # "RGB" for WS2812B, "RGBW" for SK6812.
-PIXEL_PIN      = Pin(beaper.H5_PIN, Pin.OUT)
+PIXEL_PIN      = Pin(beaper.SERVO1_PIN, Pin.OUT)
 strip = neopixel.NeoPixel(PIXEL_PIN, NUM_LEDS, bpp=3)
 
 # =============================================================================

@@ -1,27 +1,25 @@
 # ================================================================================
 # Beginner Activity 2: Timing (Blocking) [Activity_B02_Timing.py]
-# Version: 1.2
-# Updated: September 7, 2026
-#
-# Platform: mirobo.tech BEAPER Pico circuit (any configuration)
-# Requires: BEAPER_Pico.py board module file
+# Version: 0.1
+# Updated: October 28, 2026
+# 
+# Platform: Cytron Maker Pi RP2040
+# Requires: Maker_Pi.py board module file
 # ================================================================================
 
-# IMPORTANT: Copy BEAPER_Pico.py into your Raspberry Pi Pico.
-import BEAPER_Pico as beaper  # Set up BEAPER Pico I/O
+# IMPORTANT: Copy Maker_Pi.py into your Maker Pi board.
+import Maker_Pi as makerpi  # Set up Maker Pi
 
 import time  # Import time functions
 
-beaper.pico_led_on()  # Use Raspberry Pi Pico's LED as a status indicator
-
 # Main loop - code indented below while True: repeats forever
 while True:
-    beaper.LED2.value(1)
-    beaper.LED5.value(0)
+    makerpi.LED2.value(1)
+    makerpi.LED5.value(0)
     time.sleep(0.5)        # wait 0.5 seconds
 
-    beaper.LED2.value(0)
-    beaper.LED5.value(1)
+    makerpi.LED2.value(0)
+    makerpi.LED5.value(1)
     time.sleep(0.5)        # wait 0.5 seconds
 
 
@@ -43,12 +41,12 @@ while True:
 # GE 1 - Importing the time module
 # --------------------------------------------------------------------------------
 #
-# Activity B01 imported the BEAPER_Pico.py board module to make the I/O
+# Activity B01 imported the Maker_Pi.py board module to make the I/O
 # devices defined in the board module file available to its starter program.
 #
 # Example code:
 #
-# import BEAPER_Pico as beaper  # Set up BEAPER Pico I/O
+# import Maker_Pi as makerpi  # Set up Maker Pi
 #
 # The import statement essentially incorporates the contents of the board module
 # into the current program. The code in the board module won't appear in your
@@ -70,12 +68,12 @@ while True:
 #
 # Example code:
 #
-# beaper.LED2.value(1)  - sets the value of LED2 in the beaper module
+# makerpi.LED2.value(1)  - sets the value of LED2 in the Maker Pi module
 #
 # time.sleep(0.5)       - calls the sleep function in the time module
 #
-# - the value() method is called on the LED2 object defined in the beaper
-#   module, and
+# - the value() method is called on the LED2 object defined in the 
+#   Maker Pi module, and
 # - the sleep() function is being invoked from the time module.
 #
 # Most MicroPython programs are composed of many instructions combined in this
@@ -145,7 +143,7 @@ while True:
 # microsecond delays are much too short to see, they can be used to
 # generate signals at audible frequencies - including sound waves! Some
 # piezo speakers contain their own driver circuit and make a sound when
-# powered on, but the speaker on BEAPER Pico has to be switched on and off
+# powered on, but the speaker on Maker Pi has to be switched on and off
 # rapidly to create sound. Let's try it.
 #
 # First, add these two lines between the import statements and the main
@@ -156,7 +154,7 @@ while True:
 # Example code:
 #
 # from machine import Pin
-# speaker = Pin(beaper.LS1_PIN, Pin.OUT)
+# speaker = Pin(makerpi.SPEAKER_PIN, Pin.OUT)
 #
 # Next, add this new 'while True:' loop above the existing one:
 #
@@ -185,7 +183,7 @@ while True:
 # --------------------------------------------------------------------------------
 #
 # There is an easier and more flexible way to produce tones using the
-# BEAPER_Pico.py board module's tone() and noTone() functions.
+# Maker_Pi.py board module's tone() and noTone() functions.
 #
 # Remove the 'from machine import Pin' statement, the speaker definition,
 # and the entire while True: loop added in GE 5. Then replace the sleep()
@@ -194,21 +192,21 @@ while True:
 # Example code:
 #
 # while True:
-#     beaper.LED2.value(1)
-#     beaper.LED5.value(0)
-#     beaper.tone(440, 500)
+#     makerpi.LED2.value(1)
+#     makerpi.LED5.value(0)
+#     makerpi.tone(440, 500)
 #
-#     beaper.LED2.value(0)
-#     beaper.LED5.value(1)
-#     beaper.tone(523, 500)
+#     makerpi.LED2.value(0)
+#     makerpi.LED5.value(1)
+#     makerpi.tone(523, 500)
 #
 # The first parameter in tone() is the frequency in Hz, and the second is
-# the duration in milliseconds. So, beaper.tone(440, 500) plays a 440 Hz
+# the duration in milliseconds. So, makerpi.tone(440, 500) plays a 440 Hz
 # tone for 500 ms. Notice that tone() also acts as a delay: the program
 # waits for the tone to finish before moving to the next statement, just
 # as sleep() did before.
 #
-# You can also call beaper.noTone() at any point to stop a tone
+# You can also call makerpi.noTone() at any point to stop a tone
 # immediately. When you stop the program, the tone may continue playing
 # because it runs on a hardware timer that keeps going independently of
 # the program loop. Press the reset button, or call noTone(), to silence
@@ -238,17 +236,18 @@ while True:
 # EA 2 - Create an LED pattern
 # --------------------------------------------------------------------------------
 #
-# Create an animated light pattern using the four on-board LEDs. It could
-# light and extinguish the four LEDs in sequence, chase a lit LED across
-# the four positions or back and forth, or make a more unique or artistic
-# pattern. It's up to you!
+# Create an animated light pattern using the on-board LEDs. The LED names 
+# use the numbers of their GPIO pins. Look closely at the Maker Pi board- 
+# they are labeled! It could light and extinguish the four LEDs in sequence,
+# chase a lit LED across the four positions or back and forth, or make a 
+# more unique or artistic pattern. It's up to you!
 #
 # --------------------------------------------------------------------------------
 # EA 3 - Binary counting
 # --------------------------------------------------------------------------------
 #
 # Really old computers used lights to show binary values. Try to simulate
-# a binary counting sequence using BEAPER Pico's LEDs.
+# a binary counting sequence using Maker Pi's LEDs.
 #
 # --------------------------------------------------------------------------------
 # EA 4 - Compose a tune

@@ -107,7 +107,7 @@ STRIP_TYPE = "RGB"            # Change to "RGBW" for SK6812 strips.
 # for both strip types. Only the strip supply voltage differs.
 # NOTE: GPIO 20 is also the board module's SERVO1 pin - see the pin
 # sharing note above.
-PIXEL_PIN = Pin(beaper.H5_PIN, Pin.OUT)
+PIXEL_PIN = Pin(beaper.SERVO1_PIN, Pin.OUT)
 
 # NeoPixel strip object.
 # bpp=3 for RGB (WS2812B), bpp=4 for RGBW (SK6812).

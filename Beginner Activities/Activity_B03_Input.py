@@ -1,43 +1,41 @@
 # ================================================================================
 # Beginner Activity 3: Digital Input [Activity_B03_Input.py]
-# Version: 1.2
-# Updated: September 7, 2026
+# Version: 0.1
+# Updated: October 28, 2026
 #
-# Platform: mirobo.tech BEAPER Pico circuit (any configuration)
-# Requires: BEAPER_Pico.py board module file
+# Platform: Cytron Maker Pi RP2040
+# Requires: Maker_Pi.py board module file
 # ================================================================================
 
-# IMPORTANT: Copy BEAPER_Pico.py into your Raspberry Pi Pico.
-import BEAPER_Pico as beaper  # Set up BEAPER Pico I/O
+# IMPORTANT: Copy Maker_Pi.py into your Maker Pi board.
+import Maker_Pi as makerpi  # Set up BEAPER Pico I/O
 
 import time
 
-beaper.pico_led_on()  # Use Raspberry Pi Pico's LED as a status indicator
-
 while True:
-    # Momentary button SW2
-    if beaper.SW2.value() == 0:
-        beaper.LED2.value(1)
+    # Momentary button SWITCH1 (labeled GP20)
+    if makerpi.SWITCH1.value() == 0:
+        makerpi.LED2.value(1)
     else:
-        beaper.LED2.value(0)
+        makerpi.LED2.value(0)
 
     # Start a pattern
-    if beaper.SW5.value() == 0:
-        beaper.LED2.value(1)
+    if makerpi.SWITCH2.value() == 0:
+        makerpi.LED2.value(1)
         time.sleep(0.2)
-        beaper.LED3.value(1)
+        makerpi.LED3.value(1)
         time.sleep(0.2)
-        beaper.LED4.value(1)
+        makerpi.LED4.value(1)
         time.sleep(0.2)
-        beaper.LED5.value(1)
+        makerpi.LED5.value(1)
         time.sleep(0.2)
-        beaper.LED2.value(0)
+        makerpi.LED2.value(0)
         time.sleep(0.2)
-        beaper.LED3.value(0)
+        makerpi.LED3.value(0)
         time.sleep(0.2)
-        beaper.LED4.value(0)
+        makerpi.LED4.value(0)
         time.sleep(0.2)
-        beaper.LED5.value(0)
+        makerpi.LED5.value(0)
         time.sleep(0.2)
 
     time.sleep_ms(20)  # Short delay for button debouncing
@@ -63,7 +61,7 @@ while True:
 # GE 1 - Pull-up inputs and if-else
 # --------------------------------------------------------------------------------
 #
-# The pushbuttons in the BEAPER Pico circuit are connected in what is
+# The pushbuttons in the Maker Pi circuit are connected in what is
 # known as a pull-up configuration, meaning one side of each pushbutton
 # switch is wired in series with a resistor that is connected, or
 # 'pulled up', to the power supply voltage. The other terminal of the
@@ -77,7 +75,7 @@ while True:
 # because the switch connects the pin directly to ground. This is
 # what makes it an active-low input — the pin reads 0 when active.
 #
-# Notice that BEAPER_Pico.py already configured each pushbutton pin
+# Notice that Maker_Pi.py already configured each pushbutton pin
 # using Pin.PULL_UP when the board module was set up in Activity 1 —
 # this enables the microcontroller's internal pull-up resistors, so
 # no external resistors are needed on the circuit board.
@@ -87,16 +85,16 @@ while True:
 #
 # Example code:
 #
-# if beaper.SW2.value() == 0:
+# if makerpi.SWITCH1.value() == 0:
 #
 # Note that two equals signs '==' are used to compare values, while a
 # single equals sign '=' is used to assign a value. Mixing these up
 # is one of the most common beginner mistakes in programming —
-# 'if beaper.SW2.value() = 0' would cause an error, while
-# 'if beaper.SW2.value() == 0' checks whether SW2 is reading 0.
+# 'if makerpi.SWITCH1.value() = 0' would cause an error, while
+# 'if makerpi.SWITCH1.value() == 0' checks whether SW2 is reading 0.
 #
-# What value do you expect beaper.SW2.value() to return when SW2 is
-# not pressed? What about when SW2 is pressed?
+# What value do you expect makerpi.SWITCH1.value() to return when 
+# SWITCH1 is not pressed? What about when SWITCH1 is pressed?
 #
 # An 'if' structure operates similarly to the 'while' loop: program
 # statements indented below it execute 'if' the condition is true.
@@ -104,14 +102,14 @@ while True:
 # runs when the initial if condition is false — so one of the two
 # branches always executes.
 #
-# Looking at SW2's if-else condition, explain the program flow when
-# SW2 is not pressed and also when SW2 is pressed. Which LED2 value()
-# call executes in each case?
+# Looking at SWITCH1's if-else condition, explain the program flow when
+# SWITCH1 is not pressed and also when SWITCH1 is pressed. Which LED2 
+# value() call executes in each case?
 #
-# Notice how the comments '# Momentary button SW2' and '# Start a
-# pattern' mark the start of each new section of code, while the
-# comment on 'beaper.pico_led_on()' explains what that single
-# statement does and why it's there. Getting into the habit of
+# Notice how the comments '# Momentary button SWITCH1 (labeled GP20)' 
+# and '# Start a pattern' mark the start of each new section of code,
+#  while the comment on 'makerpi.pico_led_on()' explains what that
+# single statement does and why it's there. Getting into the habit of
 # writing clear comments like these will make your own programs much
 # easier to read, understand, and debug later.
 #
@@ -119,8 +117,8 @@ while True:
 # GE 2 - Blocking delays and button response
 # --------------------------------------------------------------------------------
 #
-# Press SW5 to start the light pattern. While the pattern is running,
-# does pressing and holding SW2 turn LED2 on? Explain why or why not,
+# Press SWITCH2 to start the light pattern. While the pattern is running,
+# does pressing and holding SWITCH1 turn LED2 on? Explain why or why not,
 # and what you think is happening in the program.
 #
 # Think back to Activity 2's discussion of blocking delays —
@@ -145,10 +143,10 @@ while True:
 #
 # Example code:
 #
-# if beaper.SW3.value() == 0:
-#     beaper.tone(440)
+# if makerpi.SWITCH1.value() == 0:
+#     makerpi.tone(440)
 # else:
-#     beaper.noTone()
+#     makerpi.noTone()
 #
 # What is the advantage of using an if-else structure here instead of
 # two separate if conditions — one to start the tone and one to stop
@@ -164,16 +162,16 @@ while True:
 #
 # Example code:
 #
-# if beaper.SW3.value() == 0:
-#     if beaper.SW4.value() == 0:
-#         beaper.LED3.value(1)
+# if makerpi.SWITCH1.value() == 0:
+#     if makerpi.SWITCH2.value() == 0:
+#         makerpi.LED3.value(1)
 #     else:
-#         beaper.LED3.value(0)
+#         makerpi.LED3.value(0)
 # else:
-#     beaper.LED3.value(0)
+#     makerpi.LED3.value(0)
 #
-# The nested if-else logic enables SW4 to turn the LED on only if
-# both SW3 and SW4 are pressed. Try the code in your program to
+# The nested if-else logic enables SWITCH2 to turn the LED on only if
+# both SWITCH1 and SWITCH2 are pressed. Try the code in your program to
 # verify that it works as expected.
 #
 # --------------------------------------------------------------------------------
@@ -185,10 +183,10 @@ while True:
 #
 # Example code:
 #
-# if beaper.SW3.value() == 0 and beaper.SW4.value() == 0:
-#     beaper.LED3.value(1)
+# if makerpi.SWITCH1.value() == 0 and makerpi.SWITCH2.value() == 0:
+#     makerpi.LED3.value(1)
 # else:
-#     beaper.LED3.value(0)
+#     makerpi.LED3.value(0)
 #
 # Try this code in your program to verify that it works. In what
 # ways is this solution better than using nested if-else conditions?
@@ -253,7 +251,7 @@ while True:
 # Imagine that you're creating a turn signal circuit for a bicycle. The
 # circuit has four LEDs in a row, just like your circuit, controlled by two
 # pushbuttons mounted on the bicycle's handlebars. Write a program to activate
-# a turn signal using one or more of BEAPER Pico's LEDs to indicate a left or
+# a turn signal using one or more of Maker Pi's LEDs to indicate a left or
 # right turn while the corresponding button is held.
 #
 # For an extra challenge, add brake functionality or a bell/horn
