@@ -5,7 +5,7 @@
 import Maker_Pi as makerpi  # Set up Maker Pi
 
 # Turn on one LED
-makerpi.LED0.value(1)
+makerpi.LED_GP0.on()
 
 # Main loop - code indented below while True: repeats forever
 while True:
@@ -82,22 +82,20 @@ of us needing to know the pin number LED2 is connected to.
 Example code:
 
 ```python
-makerpi.LED2.value(1)
+makerpi.LED_GP2.on()
 ```
 
 Let's break this statement down: the Maker_Pi board module has been
-given the name ```makerpi``` by the import statement, and ```LED2``` is
+given the name ```makerpi``` by the import statement, and ```LED_GP2``` is
 one of the objects defined in the Maker_Pi board module file.
-MicroPython's ```value()``` method is used to read or set pin values, so the
-end result of the microcontroller running this statement is that the
-value of the LED2 pin gets set to 1, meaning the output voltage of the
-pin connected to LED2 is set to around 3.3V, which will turn LED2 on.
+MicroPython's ```on()``` method is used to set the output voltage of the
+pin connected to the GP2 LED is set to around 3.3V, which will turn the LED on.
 
-All of Maker Pi's other LEDs (LED0 - LED28) can be controlled in
+All of Maker Pi's other LEDs (LED_GP0 - LED_GP28) can be controlled in
 exactly the same way. Let's try it.
 
-Add a second LED output statement to light LED3 below the existing
-statement that lights LED2. Run the updated program to verify that it
+Add a second LED output statement to light LED_GP3 below the existing
+statement that lights LED_GP2. Run the updated program to verify that it
 works as expected.
 
 ### GE 3 - Sequential execution

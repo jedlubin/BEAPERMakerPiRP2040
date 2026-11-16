@@ -11,7 +11,7 @@
 import Maker_Pi as makerpi  # Set up Maker Pi
 
 # Turn on one LED
-makerpi.LED_GP0.value(1)
+makerpi.LED_GP0.on()
 
 # Main loop - code indented below while True: repeats forever
 while True:
