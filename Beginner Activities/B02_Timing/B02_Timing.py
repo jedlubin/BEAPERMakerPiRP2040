@@ -14,11 +14,11 @@ import time  # Import time functions
 
 # Main loop - code indented below while True: repeats forever
 while True:
-    makerpi.LED2.value(1)
-    makerpi.LED5.value(0)
+    makerpi.LED_GP2.value(1)
+    makerpi.LED_GP5.value(0)
     time.sleep(0.5)        # wait 0.5 seconds
 
-    makerpi.LED2.value(0)
-    makerpi.LED5.value(1)
+    makerpi.LED_GP2.value(0)
+    makerpi.LED_GP5.value(1)
     time.sleep(0.5)        # wait 0.5 seconds
 

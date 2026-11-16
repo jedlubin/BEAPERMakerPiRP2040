@@ -1,14 +1,14 @@
 # ================================================================================
 # Beginner Activity 4: Constants and Variables [Activity_B04_Constants_Variables.py]
-# Version: 1.2
-# Updated: September 7, 2026
+# Version: 0.1
+# Updated: November 12, 2026
 #
-# Platform: mirobo.tech BEAPER Pico circuit (any configuration)
-# Requires: BEAPER_Pico.py board module file
+# Platform: Cytron Maker Pi RP2040
+# Requires: Maker_Pi.py board module file
 # ================================================================================
 
-# IMPORTANT: Copy BEAPER_Pico.py into your Raspberry Pi Pico.
-import BEAPER_Pico as beaper  # Set up BEAPER Pico I/O
+# IMPORTANT: Copy Maker_Pi.py into your Maker Pi board.
+import Maker_Pi as makerpi  # Set up BEAPER Pico I/O
 
 import time
 

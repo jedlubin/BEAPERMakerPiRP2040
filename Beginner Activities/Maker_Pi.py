@@ -1,7 +1,7 @@
 # ==============================================================================
 # Maker Pi RP2040 Board Module [Maker_Pi.py]
 # Version: 0.1
-# Updated: October 26, 2026
+# Updated: November 16, 2026
 # 
 # Board support module for using the Cytron Maker Pi RP 2040. Based on the  
 # mirobo.tech BEAPER Pico module and beginner microcontroller curriculum. 
@@ -21,7 +21,33 @@
 # ==============================================================================
 
 from machine import Pin, ADC, PWM
+import neopixel
 import time
+
+# ------------------------------------------------------------------------------
+# NeoPixel RGB LEDs
+# ------------------------------------------------------------------------------
+
+NEOPIXEL_PIN = const(18)
+# Note: const() stores fixed values in ROM to save RAM
+
+NEOPIXEL = neopixel.NeoPixel(Pin(NEOPIXEL_PIN, Pin.OUT), 2)
+
+WHITE = (255, 255, 255)
+RED =   (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE =  (0, 0, 255)
+OFF =   (0, 0, 0)
+
+def neopixel_set_color(rgb, i=None):
+    if i == None:
+        NEOPIXEL.fill(rgb)
+    else:
+        NEOPIXEL[i] = rgb
+    NEOPIXEL.write()
+
+def neopixel_off():
+    neopixel_set_color(OFF)
 
 # ------------------------------------------------------------------------------
 # LEDs (Digital IO Status)
@@ -30,37 +56,36 @@ import time
 # IMPORTANT: LED pins are shared with GPIO pins. Using the
 # LEDs will affect other components' behavior!
 
-LED0_PIN = const(0)  # LED on GPIO 0
-LED1_PIN = const(1)  # LED on GPIO 1
-LED2_PIN = const(2)  # LED on GPIO 2
-LED3_PIN = const(3)  # LED on GPIO 3
-LED4_PIN = const(4)  # LED on GPIO 4
-LED5_PIN = const(5)  # LED on GPIO 5
-LED6_PIN = const(6)  # LED on GPIO 6
-LED7_PIN = const(7)  # LED on GPIO 7
-LED16_PIN = const(16)  # LED on GPIO 16
-LED17_PIN = const(17)  # LED on GPIO 17
-LED26_PIN = const(26)  # LED on GPIO 26
-LED27_PIN = const(27)  # LED on GPIO 27
-LED28_PIN = const(28)  # LED on GPIO 28
-# Note: const() stores fixed values in ROM to save RAM
+LED_GP0_PIN = const(0)  # LED on GPIO 0
+LED_GP1_PIN = const(1)  # LED on GPIO 1
+LED_GP2_PIN = const(2)  # LED on GPIO 2
+LED_GP3_PIN = const(3)  # LED on GPIO 3
+LED_GP4_PIN = const(4)  # LED on GPIO 4
+LED_GP5_PIN = const(5)  # LED on GPIO 5
+LED_GP6_PIN = const(6)  # LED on GPIO 6
+LED_GP7_PIN = const(7)  # LED on GPIO 7
+LED_GP16_PIN = const(16)  # LED on GPIO 16
+LED_GP17_PIN = const(17)  # LED on GPIO 17
+LED_GP26_PIN = const(26)  # LED on GPIO 26
+LED_GP27_PIN = const(27)  # LED on GPIO 27
+LED_GP28_PIN = const(28)  # LED on GPIO 28
 
-LED0 = Pin(LED0_PIN, Pin.OUT)
-LED1 = Pin(LED1_PIN, Pin.OUT)
-LED2 = Pin(LED2_PIN, Pin.OUT)
-LED3 = Pin(LED3_PIN, Pin.OUT)
-LED4 = Pin(LED4_PIN, Pin.OUT)
-LED5 = Pin(LED5_PIN, Pin.OUT)
-LED6 = Pin(LED6_PIN, Pin.OUT)
-LED7 = Pin(LED7_PIN, Pin.OUT)
-LED16 = Pin(LED16_PIN, Pin.OUT)
-LED17 = Pin(LED17_PIN, Pin.OUT)
-LED26 = Pin(LED26_PIN, Pin.OUT)
-LED27 = Pin(LED27_PIN, Pin.OUT)
-LED28 = Pin(LED28_PIN, Pin.OUT)
+LED_GP0 = Pin(LED_GP0_PIN, Pin.OUT)
+LED_GP1 = Pin(LED_GP1_PIN, Pin.OUT)
+LED_GP2 = Pin(LED_GP2_PIN, Pin.OUT)
+LED_GP3 = Pin(LED_GP3_PIN, Pin.OUT)
+LED_GP4 = Pin(LED_GP4_PIN, Pin.OUT)
+LED_GP5 = Pin(LED_GP5_PIN, Pin.OUT)
+LED_GP6 = Pin(LED_GP6_PIN, Pin.OUT)
+LED_GP7 = Pin(LED_GP7_PIN, Pin.OUT)
+LED_GP16 = Pin(LED_GP16_PIN, Pin.OUT)
+LED_GP17 = Pin(LED_GP17_PIN, Pin.OUT)
+LED_GP26 = Pin(LED_GP26_PIN, Pin.OUT)
+LED_GP27 = Pin(LED_GP27_PIN, Pin.OUT)
+LED_GP28 = Pin(LED_GP28_PIN, Pin.OUT)
 
-LEDS = (LED0, LED1, LED2, LED3, LED4, LED5, LED6, LED7,
-        LED16, LED17, LED26, LED27, LED28)  # Tuple of all LED pins.
+LEDS = (LED_GP0, LED_GP1, LED_GP2, LED_GP3, LED_GP4, LED_GP5, LED_GP6, LED_GP7,
+        LED_GP16, LED_GP17, LED_GP26, LED_GP27, LED_GP28)  # Tuple of all LED pins.
 # Useful for iterating through all LEDS - see below:
 
 def leds_on():
@@ -79,13 +104,13 @@ def leds_off():
 
 # All pushbutton switches use internal pull-up resistors (active-LOW)
 
-SW1_PIN = const(20)  # SW0
-SW2_PIN = const(21)  # SW1
+SW_GP20_PIN = const(20)
+SW_GP21_PIN = const(21)
 
-SWITCH1 = Pin(SW1_PIN, Pin.IN, Pin.PULL_UP)
-SWITCH2 = Pin(SW2_PIN, Pin.IN, Pin.PULL_UP)
+SWITCH_GP20 = Pin(SW_GP20_PIN, Pin.IN, Pin.PULL_UP)
+SWITCH_GP21 = Pin(SW_GP21_PIN, Pin.IN, Pin.PULL_UP)
 
-SWITCHES = (SWITCH1, SWITCH2)  # Tuple of all pushbutton switch pins.
+SWITCHES = (SWITCH_GP20, SWITCH_GP21)  # Tuple of all pushbutton switch pins.
 # Useful for iterating through all SWITCHES - see LEDS examples, above.
 
 
@@ -93,16 +118,18 @@ SWITCHES = (SWITCH1, SWITCH2)  # Tuple of all pushbutton switch pins.
 # Motor Controller
 # ------------------------------------------------------------------------------
 
-# IMPORTANT: Motor controller is connected to LED pins! Using the
-# LEDs while the the motors are active will affect motor behavior!
-
 # NOTE: The forward and reverse directions of each motor are dependent
 # on both program code and physical motor wiring connections on CON1.
 
-M1A = Pin(8, Pin.OUT)  # Left motor terminal A
-M1B = Pin(9, Pin.OUT)  # Left motor terminal B
-M2A = Pin(10, Pin.OUT)  # Right motor terminal A
-M2B = Pin(11, Pin.OUT)  # Right motor terminal B
+M1A_PIN = const(8)
+M1B_PIN = const(9)
+M2A_PIN = const(10)
+M2B_PIN = const(11)
+
+M1A = Pin(M1A_PIN, Pin.OUT)  # Left motor terminal A
+M1B = Pin(M1B_PIN, Pin.OUT)  # Left motor terminal B
+M2A = Pin(M2A_PIN, Pin.OUT)  # Right motor terminal A
+M2B = Pin(M2B_PIN, Pin.OUT)  # Right motor terminal B
 
 # Motor helper functions
 
@@ -170,8 +197,6 @@ def beep(duration=100):
 # Analog Inputs
 # ------------------------------------------------------------------------------
 
-# IMPORTANT: On-board analog jumpers must be used to select analog devices.
-
 ADC0_PIN = const(26)
 ADC1_PIN = const(27)
 ADC2_PIN = const(28)
@@ -202,10 +227,10 @@ def mcu_temperature():
 # ------------------------------------------------------------------------------
 
 # 5V Digital output headers (output only)
-SERVO1_PIN = const(12)  # Servo 1
-SERVO2_PIN = const(13)  # Servo 2
-SERVO3_PIN = const(14)  # Servo 3
-SERVO4_PIN = const(15)  # Servo 4
+SERVO_GP12_PIN = const(12)  # Servo 1
+SERVO_GP13_PIN = const(13)  # Servo 2
+SERVO_GP14_PIN = const(14)  # Servo 3
+SERVO_GP15_PIN = const(15)  # Servo 4
 
 # Servo pulse width constants (microseconds). Adjust for your servo.
 # Standard 90-degree servo: 1000us to 2000us
@@ -219,12 +244,12 @@ SERVO_RANGE  = const(90)     # Maximum servo angle (degrees)
 #   - 1.5ms pulse: duty_u16 = (1.5 / 20.0) * 65535 = 4915
 # Modify the duty_u16 value if the centre position is not safe for
 # your application before connecting servos to the circuit.
-SERVO1 = PWM(Pin(SERVO1_PIN), freq=50, duty_u16=4915)
-SERVO2 = PWM(Pin(SERVO2_PIN), freq=50, duty_u16=4915)
-SERVO3 = PWM(Pin(SERVO3_PIN), freq=50, duty_u16=4915)
-SERVO4 = PWM(Pin(SERVO4_PIN), freq=50, duty_u16=4915)
+SERVO_GP12 = PWM(Pin(SERVO_GP12_PIN), freq=50, duty_u16=4915)
+SERVO_GP13 = PWM(Pin(SERVO_GP13_PIN), freq=50, duty_u16=4915)
+SERVO_GP14 = PWM(Pin(SERVO_GP14_PIN), freq=50, duty_u16=4915)
+SERVO_GP15 = PWM(Pin(SERVO_GP15_PIN), freq=50, duty_u16=4915)
 
-SERVOS = (SERVO1, SERVO2, SERVO3, SERVO4)  # Tuple of all servo PWM outputs
+SERVOS = (SERVO_GP12, SERVO_GP13, SERVO_GP14, SERVO_GP15)  # Tuple of all servo PWM outputs
 
 def set_servo(servo, angle):
     # Set a servo to angle (0 to SERVO_RANGE degrees).
